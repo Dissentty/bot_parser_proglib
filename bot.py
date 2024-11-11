@@ -1,8 +1,5 @@
-from aiogram.filters import Command
-from aiogram.types import Message
 import aiogram
-import re
-import requests, random, threading, asyncio, sqlite3
+import asyncio
 from handlers import router
 
 

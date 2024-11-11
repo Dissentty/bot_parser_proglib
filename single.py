@@ -17,7 +17,6 @@ def parsing():
     url_article = requests.get(href, headers=headers)
     soup_article = BeautifulSoup(url_article.text, "html.parser")
     images = soup_article.find('img', attrs={"alt":title})
-    print(images["src"])
 
     return ([f'{title}\n\n{description}\n\n{href}',f'{images["src"]}'])
 
