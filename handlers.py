@@ -23,5 +23,7 @@ router = Router()
 
 @router.message(Command('start'))
 async def start_handler(msg: Message):
-    url_photo = 'https://media.proglib.io/posts/2024/11/06/8cfb6270920350b05e23957fc3a8bc8d.png'
-    await bot.send_photo(chat_id=msg.chat.id, photo=url_photo, caption=parsing())
+    res_parsing = parsing()
+    text = res_parsing[0]
+    url_photo = res_parsing[1]
+    await bot.send_photo(chat_id=msg.chat.id, photo=url_photo, caption=text)

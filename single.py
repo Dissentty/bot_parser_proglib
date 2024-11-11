@@ -11,7 +11,16 @@ def parsing():
     description = result.find('div', class_="preview-card__text").text
     link = article.find("a", class_="no-link")
     href = "https://proglib.io" + link["href"]
-    return(f'{title}\n\n{description}\n\n{href}')
+
+
+    # фотография со страницы статьи
+    url_article = requests.get(href, headers=headers)
+    soup_article = BeautifulSoup(url_article.text, "html.parser")
+    images = soup_article.find('img', attrs={"alt":title})
+    print(images["src"])
+
+    return ([f'{title}\n\n{description}\n\n{href}',f'{images["src"]}'])
+
 '''
     url_article = requests.get(href, headers=headers)
     soup_article = BeautifulSoup(url_article.text, "html.parser")
