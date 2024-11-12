@@ -1,10 +1,13 @@
-import aiogram
+import aiogram, os
 import asyncio
+from dotenv import load_dotenv
 from handlers import router
 
 
 async def main():
-    bot = aiogram.Bot(token='7279498061:AAF_vm1OjASshZ9AkbioG67F39hkWpeteBQ')
+    load_dotenv()
+    token = os.getenv("TOKEN")
+    bot = aiogram.Bot(token=token)
     dp = aiogram.Dispatcher()
     dp.include_router(router)
     await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
